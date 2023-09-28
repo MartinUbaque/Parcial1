@@ -4,11 +4,21 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import LoginMail from './components/login/Login-mail';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import Carros  from './components/login/Carros'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LoginMail />} />
+            <Route path="/carros" element={<Carros />} />
+
+          </Routes>
+        </BrowserRouter>
   </React.StrictMode>
 );
 
