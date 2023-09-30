@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import {Form, Alert} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 function LoginMail() {
 
   const [formValues, setFormValues] = useState({email:"",password:""})
@@ -83,35 +84,35 @@ function LoginMail() {
 
   return (
 <div>
-<h1>{submited ? formValues.email : 'Acceder'}</h1>
-<h3>{submited ? "": 'Accede a tu cuenta UniAlpes'}</h3>
+<h1>{submited ? formValues.email : <FormattedMessage id="Access"/>}</h1>
+<h3>{submited ? "":  <FormattedMessage id="Access to your UniAlpes account"/>}</h3>
 <Form>
 {!submited &&
 <Form.Group className="mb-6" controlId="formBasicEmail">
-
-<Form.Control type="email" placeholder="Correo electrónico"
+<Form.Label><FormattedMessage id="Email"/></Form.Label>
+<Form.Control type="email" 
 onChange={handleEmailChange} value={formValues.email}/>
-{!validationStates.emailState && <Alert variant="danger"><Form.Text className="text-muted">{renderMailMessage()}</Form.Text></Alert>}
+{!validationStates.emailState && <Alert variant="danger"><Form.Text className="text-muted">{<FormattedMessage id={renderMailMessage()}/>}</Form.Text></Alert>}
 </Form.Group>
 
 }
 {!submited &&
 <Button variant="primary"  onClick={clickSubmit1} disabled={!validationStates.emailState}>
-Submit
+{<FormattedMessage id="Submit"/>}
 </Button>
 }
 
 {submited && <Form.Group className="mb-3" controlId="formBasicPassword">
-<Form.Control type="password" placeholder="Ingresa tu contraseña"
+<Form.Control type="password" placeholder={<FormattedMessage id="Enter your password"/>}
 onChange={handlePasswordChange} value={formValues.password} />
 
-{!validationStates.paswordState && <Alert variant="danger"><Form.Text className="text-muted">Your password should be  at least 6 char long</Form.Text></Alert>}
+{!validationStates.paswordState && <Alert variant="danger"><Form.Text className="text-muted">{<FormattedMessage id="Your password should be  at least 6 char long"/>}</Form.Text></Alert>}
 </Form.Group>}
 
 {submited && 
     <Link to="/carros" className="nav-link principal">
 <Button variant="primary"  onClick={clickSubmit2} disabled={!validationStates.paswordState}>
-Submit
+{<FormattedMessage id="Submit"/>}
 </Button>
 </Link>}
 

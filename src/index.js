@@ -6,11 +6,15 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import LoginMail from './components/login/Login-mail';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import {IntlProvider} from 'react-intl';
+import localeEsMessages from "./locale-data/es";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Carros  from './components/login/Carros'
+
+const userLanguage = navigator.language || navigator.userLanguage;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <IntlProvider locale={userLanguage}  messages= {localeEsMessages} >
   <React.StrictMode>
     <BrowserRouter>
           <Routes>
@@ -20,6 +24,7 @@ root.render(
           </Routes>
         </BrowserRouter>
   </React.StrictMode>
+  </IntlProvider>
 );
 
 // If you want your app to work offline and load faster, you can change
