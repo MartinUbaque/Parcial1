@@ -103,10 +103,11 @@ onChange={handleEmailChange} value={formValues.email}/>
 }
 
 {submited && <Form.Group className="mb-3" controlId="formBasicPassword">
-<Form.Control type="password" placeholder={<FormattedMessage id="Enter your password"/>}
+<Form.Label><FormattedMessage id="Enter your password"/></Form.Label>
+<Form.Control type="password" 
 onChange={handlePasswordChange} value={formValues.password} />
 
-{!validationStates.paswordState && <Alert variant="danger"><Form.Text className="text-muted">{<FormattedMessage id="Your password should be  at least 6 char long"/>}</Form.Text></Alert>}
+{!validationStates.paswordState && <Alert variant="danger"><Form.Text className="text-muted">{<FormattedMessage id="Your password should be at least 6 char long"/>}</Form.Text></Alert>}
 </Form.Group>}
 
 {submited && 
